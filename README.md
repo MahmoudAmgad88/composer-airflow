@@ -25,6 +25,17 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
   - Web server machine type : composer-n1-webserver-2 (2 vCPU, 1.6 GB memory)<br>
   - US has the cheapest cost for running an environment.
 - ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/4f756336-0f27-4482-9bdb-a85cdcbf1f40)
-  
+
+  - to create Environment choose Compse 1 or compse 2 [Cloud Composer versioning overview](https://cloud.google.com/composer/docs/concepts/versioning/composer-versioning-overview?_ga=2.232311903.-1169484772.1688163477&_gac=1.13708869.1688373034.CjwKCAjw44mlBhAQEiwAqP3eVvySMkBOtNCW3J95t3qkeogI31rm7rpXKIjN2dzSdu3Wfx8SBLH_rxoC9dcQAvD_BwE) just   - thyen you will choose Environment name and select you service account which we are creted before then we will kepp all configuration as default 
+    
 ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/a5308423-94aa-4a86-b603-80c493b0c525)
 
+ ### How to Use<br>
+- Open google composer, and click `Airflow Server` and `DAG`
+- Place your DAG into the folder `DAG` inside airflow bucket. <b> Note : Airflow bucket only for Airflow components only </b>
+- Fill your variables in the Airflow UI by clicking Admin and then Variables.
+- Change `bucket_path` and `project_id` as per your project and path name <br>
+<img src='./result/variables.PNG'>
+- Monitor your process trough Airflow UI
+<img src='/result/airflow ui.PNG'>
+<img src='/result/airflow ui 1.PNG'><br>
