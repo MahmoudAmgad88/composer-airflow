@@ -54,6 +54,12 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
   ```
   sudo su
   gcloud config set project [project id]
+  mkdir airflow
+  cd airflow/
+  ls
+  gsutil ls
+  gsutil ls gs://us-central1-airflow-env-com-95c3b79f-bucket/
+  gsutil cp * gs://us-central1-airflow-env-com-95c3b79f-bucket/dags/
   ```
 - we will creat a python code db_backup.py for new Dag then copy it to our bucket in DAG folder for deploying
 - Place your DAG into the folder `DAG` inside airflow bucket. <b> Note : copy db_backup.py to our bucket in DAG folder for deployingy </b>
