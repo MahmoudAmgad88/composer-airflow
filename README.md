@@ -56,6 +56,9 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 
 - Monitor your process trough Airflow UI
 
+### Clean up:
+
+![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/c4429440-6152-414a-ab5f-869b1a92c7b6)
 
 #### Code task_1 Comments :<br>
 ```
