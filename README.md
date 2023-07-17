@@ -57,7 +57,7 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 - Monitor your process trough Airflow UI
 
 
-#### Code Comments :<br>
+#### Code task_1 Comments :<br>
 ```
 import airflow
 from airflow import DAG
@@ -117,6 +117,50 @@ create_image >> create_snapshot
 create_snapshot >> startvm
 ```
 
+#### Code task_1 Comments :<br>
+```
+from airflow import DAG
+from airflow.operators.python import PythonOperator #PythonOperator is an operator that executes a Python callable as a task in the DAG.
+from datetime import datetime
+from Preproces import importing
+from Preproces import cleaning
+from Preproces import transforming
+from Preproces import AddingExternalData
+
+
+with DAG("dag1", start_date = datetime(2023, 1, 4), #The DAG is scheduled to run daily starting January 4, 2023 
+	schedule_interval="@daily", catchup=False) as dag: #  catchup set to False (meaning it won't backfill past DAG runs).
+
+# Within the DAG context, tasks are defined using PythonOperator.
+#Each task is assigned a unique task_id and a python_callable which is a Python function that will be executed as the task.
+
+    import_csv_1= PythonOperator(
+        task_id = 'importing',
+        python_callable = importing,
+        do_xcom_push=True,
+    )
+    clean_csv_1= PythonOperator(
+        task_id = 'clean',
+        python_callable = cleaning,
+    )
+
+    transform_csv_1= PythonOperator(
+        task_id = 'transforming',
+        python_callable = transforming,
+    )
+
+    externalData_csv_1= PythonOperator(
+        task_id = 'AddingExternalData',
+        python_callable = AddingExternalData,
+        op_kwargs={
+            "filename": "/opt/airflow/data/dft-road-casualty-statistics-vehicle-last-5-years.csv"
+        },
+    )
+
+
+# The tasks are executed sequentially based on their dependencies
+    import_csv_1 >> clean_csv_1 >> transform_csv_1 >> externalData_csv_1
+```
  ### For further improvement :<br>
 - I need to call python code from github repo then deolpy it automaticlly after every changes in repo.
 - neeed to deply Airflow with MLflow
