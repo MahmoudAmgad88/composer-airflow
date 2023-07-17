@@ -35,7 +35,7 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 
   ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/3a4a307c-0e11-4950-a5b9-344d89e376f0)
 
- #### Steps<br>
+ #### Steps :<br>
 - Open google composer, and click `Airflow Server` and `DAG`
 - we will use cloud sheel to create our `New DAG`
 - Run below command for auth in cloud sheel.
@@ -44,13 +44,15 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
   gcloud config set project [project id]
   ```
 - we will creat a python code db_backup.py for new Dag then copy it to our bucket in DAG folder for deploying
+- Place your DAG into the folder `DAG` inside airflow bucket. <b> Note : copy db_backup.py to our bucket in DAG folder for deployingy </b>
 
+![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/02d5e000-ff32-4211-a2ca-9222e7f9859a)
 
-- Place your DAG into the folder `DAG` inside airflow bucket. <b> Note : Airflow bucket only for Airflow components only </b>
-- Fill your variables in the Airflow UI by clicking Admin and then Variables.
-- Change `bucket_path` and `project_id` as per your project and path name <br>
-<img src='./result/variables.PNG'>
 - Monitor your process trough Airflow UI
+
+
+
+
 
  ### For further improvement :<br>
 - I should make the destination table inside the query using variable to make the code more robust and cleaner. But after trying to use airflow module variable, it did not work. I have to learn more about it.
