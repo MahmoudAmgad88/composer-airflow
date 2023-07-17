@@ -6,7 +6,14 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 - First thing to do is to create Google Cloud Platform Account. Usually This is completely free. Even you got $300 USD balance to be ised in 90 days for the sake of learning in GCP Environment<br>
 
 ### Installation<br>
-- Create a project and you can give it any name with certain regulation<br>
+#### Cloud Composer 1 Guides:
+
+[Installation Steps](https://cloud.google.com/composer/docs/run-apache-airflow-dag)
+
+#### Cloud Composer 2 Guides:
+
+[Installation Steps](https://cloud.google.com/composer/docs/composer-2/run-apache-airflow-dag)
+
 - Create service account for your GCP: please follow the steps <a href='https://cloud.google.com/iam/docs/creating-managing-service-accounts'> how to create google service account</a><br>
 
 ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/0152e209-bdc6-41a7-b128-61a9bb981c85)
