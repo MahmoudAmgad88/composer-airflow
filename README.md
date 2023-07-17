@@ -57,8 +57,65 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 - Monitor your process trough Airflow UI
 
 
+#### Code Comments :<br>
+```
+import airflow
+from airflow import DAG
+from airflow.operators.bash_operator import BashOperator
+from datetime import timedelta
+
+default_args = {
+    'start_date': airflow.utils.dates.days_ago(0), #Sets the start date for the DAG to the current date and time.
+    'retries': 1, #Sets the number of retries for failed tasks to 1
+    'retry_delay': timedelta(minutes=5) #Sets the delay between retries for failed tasks to 5 minutes.
+}
+
+dag = DAG(
+    'db_backup',
+    default_args=default_args,
+    description='db salakawy dag',
+    schedule_interval='*/10 * * * *', #This specifies the schedule interval for the DAG(cron syntax). In this case, the DAG is scheduled to run every 10 minutes.
+    max_active_runs=2,
+    catchup=False, #meaning it will only run based on the schedule interval going forward.
+                   #(avoid running old non-triggered diagrams between the start and current data )
+    dagrun_timeout=timedelta(minutes=10) #Sets the timeout for each individual DAG run to 10 minutes.
+
+stopvm = BashOperator(
+    task_id='stopvm',
+    bash_command='gcloud compute instances stop database --project=airflow-composer-392913 --zone=us-west4-b',
+    dag=dag,
+    depends_on_past=False,
+    do_xcom_push=False)
+
+create_image = BashOperator(
+    task_id='create_image',
+    bash_command='gcloud compute machine-images create databaseimage --source-instance=database --project=airflow-composer-392913 --source-instance-zone=us-west4-b',
+    dag=dag,
+    depends_on_past=False,
+    do_xcom_push=False)
 
 
+startvm = BashOperator(
+    task_id='startvm',
+    bash_command='gcloud compute instances start database --project=airflow-composer-392913 --zone=us-west4-b',
+    dag=dag,
+    depends_on_past=False,
+    trigger_rule='one_success',
+    do_xcom_push=False)
+
+create_snapshot = BashOperator(
+    task_id='create_snapshot',
+    bash_command='gcloud compute snapshots create databasesnapshot --source-disk=database --project=airflow-composer-392913 --source-disk-zone=us-west4-b',
+    dag=dag,
+    trigger_rule='one_failed',
+    depends_on_past=False,
+    do_xcom_push=False)
+
+#DAG Dependencies
+stopvm >> create_image >> startvm
+create_image >> create_snapshot
+create_snapshot >> startvm
+```
 
  ### For further improvement :<br>
 - I need to call python code from github repo then deolpy it automaticlly after every changes in repo.
