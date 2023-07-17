@@ -34,11 +34,10 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 - ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/4f756336-0f27-4482-9bdb-a85cdcbf1f40)
 
   - to create Environment choose Cloud Composer [Cloud Composer versioning overview](https://cloud.google.com/composer/docs/concepts/versioning/composer-versioning-overview?_ga=2.232311903.-1169484772.1688163477&_gac=1.13708869.1688373034.CjwKCAjw44mlBhAQEiwAqP3eVvySMkBOtNCW3J95t3qkeogI31rm7rpXKIjN2dzSdu3Wfx8SBLH_rxoC9dcQAvD_BwE) and for Environment creation you can use [this guide](https://cloud.google.com/composer/docs/composer-2/create-environments)
-  - we will choose Cloud Composer 1 then choose Environment name and select you service account which we are creted before then we will kepp all configuration as default also in Network configuration choose default then press create.
+  - After choosing Cloud Composer 2 then choose Environment name and select you service account which we are creted before then we will kepp all configuration as default then press create.
     
 ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/5d719511-d612-42a3-b84a-10b84b2491c3)
 
-![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/2dadd9f6-3f7e-4ba5-b3fd-05d006c32d1d)
 
 ## Environment architecture:<br>
 [Environment architecture.](https://cloud.google.com/static/composer/docs/images/composer-2-public-ip-architecture.svg)
