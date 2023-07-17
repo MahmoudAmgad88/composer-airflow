@@ -7,9 +7,13 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 
 ### Installation<br>
 - Create a project and you can give it any name with certain regulation<br>
-- Create service account for your GCP. You will receive credential keys for many purpose. One of the purpose is to connect the data inside your storage to other's data so that it can integrated. To create service account, please follow the steps <a href='https://cloud.google.com/iam/docs/creating-managing-service-accounts'> how to create google service account</a><br>
-- Create a google cloud storage, create a folder (bucket) and upload the data needed there
-- Create a composer with this details :
+- Create service account for your GCP: please follow the steps <a href='https://cloud.google.com/iam/docs/creating-managing-service-accounts'> how to create google service account</a><br>
+![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/0152e209-bdc6-41a7-b128-61a9bb981c85)
+
+- Create IAM role for your GCP service account
+![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/487fc643-0ab1-43ee-8742-7d9754ffbb2b)
+- Create a composer env with this details :
+- ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/4f756336-0f27-4482-9bdb-a85cdcbf1f40)
   - Location :  us-central1
   - Zone : us-central1
   - Node count : 3
@@ -18,3 +22,5 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
   - Cloud SQL machine type : db-n1-standard-2 (2 vCPU, 7.5 GB memory)
   - Web server machine type : composer-n1-webserver-2 (2 vCPU, 1.6 GB memory)<br>
  US has the cheapest cost for running an environment.
+![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/a5308423-94aa-4a86-b603-80c493b0c525)
+
