@@ -264,7 +264,7 @@ Overall, Google Cloud Composer is a more comprehensive solution for running and 
 - Monitoring all jobs status in real time + Email alerts
 - Community support
 
-### advantages of using Airflow in Google Cloud Platform (GCP) compared to a local installation
+### Advantages of using Airflow in (GCP) VS local installation: 
 
 Managed Service: GCP offers Cloud Composer, a managed service for Apache Airflow. With Cloud Composer, you don't need to worry about managing the infrastructure, installing dependencies, or scaling the environment. Google takes care of the underlying infrastructure, ensuring high availability and reliability.
 
