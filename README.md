@@ -26,7 +26,8 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
   - US has the cheapest cost for running an environment.
 - ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/4f756336-0f27-4482-9bdb-a85cdcbf1f40)
 
-  - to create Environment choose Cloud Composer 1 or 2 [Cloud Composer versioning overview](https://cloud.google.com/composer/docs/concepts/versioning/composer-versioning-overview?_ga=2.232311903.-1169484772.1688163477&_gac=1.13708869.1688373034.CjwKCAjw44mlBhAQEiwAqP3eVvySMkBOtNCW3J95t3qkeogI31rm7rpXKIjN2dzSdu3Wfx8SBLH_rxoC9dcQAvD_BwE) just   - we will choose Cloud Composer 2 then choose Environment name and select you service account which we are creted before then we will kepp all configuration as default then press create.
+  - to create Environment choose Cloud Composer 1 or 2 [Cloud Composer versioning overview](https://cloud.google.com/composer/docs/concepts/versioning/composer-versioning-overview?_ga=2.232311903.-1169484772.1688163477&_gac=1.13708869.1688373034.CjwKCAjw44mlBhAQEiwAqP3eVvySMkBOtNCW3J95t3qkeogI31rm7rpXKIjN2dzSdu3Wfx8SBLH_rxoC9dcQAvD_BwE) use [this guide](https://cloud.google.com/composer/docs/composer-2/create-environments)
+  - we will choose Cloud Composer 2 then choose Environment name and select you service account which we are creted before then we will kepp all configuration as default then press create.
     
 ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/a5308423-94aa-4a86-b603-80c493b0c525)
 
