@@ -55,8 +55,36 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 
 
  ### For further improvement :<br>
-- I should make the destination table inside the query using variable to make the code more robust and cleaner. But after trying to use airflow module variable, it did not work. I have to learn more about it.
-- I should get used to coding as per PEP-8 format. In this file, I'm using autopep8 library, but I think the best practice is by reading and writting more and more code.
-- Explore more about dataflow
+- I need to call python code from github repo then deolpy it automaticlly after every changes in repo.
+- neeed to deply Airflow with MLflow
+- Need to build a full automated Pipeline using Airflow , MLflow and github
+- Explore more about full automated Pipeline
 
+![WhatsApp Image 2023-07-16 at 8 56 54 PM](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/87c2b2b7-47bc-4e0a-8965-6eb7a0596730)
+
+
+### some useful command may be needed in GCP:
+```
+sudo su
+gcloud config set project [project id]
+gcloud compute instances create my-test-vm --source-instance-template=my-instance-template-with-custom-image
+gcloud compute instance-groups managed list
+gcloud compute instance-groups managed delete my-managed-instance-group
+gcloud compute instance-groups managed create my-mig --zone us-central1-a --template my-instance-template-with-custom-image --size 1
+gcloud compute instance-groups managed set-autoscaling my-mig --max-num-replicas=2 --zone us-central1-a
+gcloud compute instance-groups managed stop-autoscaling my-mig --zone us-central1-a
+gcloud compute instance-groups managed resize my-mig --size=1 --zone=us-central1-a
+gcloud compute instance-groups managed recreate-instances my-mig --instances=my-mig-85fb --zone us-central1-a
+gcloud compute instance-groups managed delete my-managed-instance-group --region=us-central1
+```
+### IAM:
+```
+gcloud compute project-info describe
+gcloud auth list
+gcloud projects get-iam-policy glowing-furnace-304608
+gcloud projects add-iam-policy-binding glowing-furnace-304608 --member=user:in28minutes@gmail.com --role=roles/storage.objectAdmin
+gcloud projects remove-iam-policy-binding glowing-furnace-304608 --member=user:in28minutes@gmail.com --role=roles/storage.objectAdmin
+gcloud iam roles describe roles/storage.objectAdmin
+gcloud iam roles copy --source=roles/storage.objectAdmin --destination=my.custom.role --dest-project=glowing-furnace-304608
+```
 Thankyou and Happy Coding
