@@ -27,10 +27,11 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 - ![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/4f756336-0f27-4482-9bdb-a85cdcbf1f40)
 
   - to create Environment choose Cloud Composer [Cloud Composer versioning overview](https://cloud.google.com/composer/docs/concepts/versioning/composer-versioning-overview?_ga=2.232311903.-1169484772.1688163477&_gac=1.13708869.1688373034.CjwKCAjw44mlBhAQEiwAqP3eVvySMkBOtNCW3J95t3qkeogI31rm7rpXKIjN2dzSdu3Wfx8SBLH_rxoC9dcQAvD_BwE) and for Environment creation you can use [this guide](https://cloud.google.com/composer/docs/composer-2/create-environments)
-  - we will choose Cloud Composer 2 then choose Environment name and select you service account which we are creted before then we will kepp all configuration as default then press create.
+  - we will choose Cloud Composer 1 then choose Environment name and select you service account which we are creted before then we will kepp all configuration as default also in Network configuration choose default then press create.
     
-![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/a5308423-94aa-4a86-b603-80c493b0c525)
+![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/5d719511-d612-42a3-b84a-10b84b2491c3)
 
+![image](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/2dadd9f6-3f7e-4ba5-b3fd-05d006c32d1d)
 
 ## Environment architecture:<br>
 [Environment architecture.](https://cloud.google.com/static/composer/docs/images/composer-2-public-ip-architecture.svg)
@@ -68,7 +69,7 @@ We will try to set Airflow in Google Cloud Platform Environment using Google Com
 ![WhatsApp Image 2023-07-16 at 8 56 54 PM](https://github.com/MahmoudAmgad88/composer-airflow/assets/54455617/87c2b2b7-47bc-4e0a-8965-6eb7a0596730)
 
 
-### some useful command may be needed in GCP:
+### some useful command may be needed in GCE:
 ```
 sudo su
 gcloud config set project [project id]
@@ -82,6 +83,47 @@ gcloud compute instance-groups managed resize my-mig --size=1 --zone=us-central1
 gcloud compute instance-groups managed recreate-instances my-mig --instances=my-mig-85fb --zone us-central1-a
 gcloud compute instance-groups managed delete my-managed-instance-group --region=us-central1
 ```
+
+
+### GKE
+```
+gcloud config set project my-kubernetes-project-304910
+gcloud container clusters get-credentials my-cluster --zone us-central1-c --project my-kubernetes-project-304910
+kubectl create deployment hello-world-rest-api --image=in28min/hello-world-rest-api:0.0.1.RELEASE
+kubectl get deployment
+kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
+kubectl get services
+kubectl get services --watch
+curl 35.184.204.214:8080/hello-world
+kubectl scale deployment hello-world-rest-api --replicas=3
+gcloud container clusters resize my-cluster --node-pool default-pool --num-nodes=2 --zone=us-central1-c
+kubectl autoscale deployment hello-world-rest-api --max=4 --cpu-percent=70
+kubectl get hpa
+kubectl create configmap hello-world-config --from-literal=RDS_DB_NAME=todos
+kubectl get configmap
+kubectl describe configmap hello-world-config
+kubectl create secret generic hello-world-secrets-1 --from-literal=RDS_PASSWORD=dummytodos
+kubectl get secret
+kubectl describe secret hello-world-secrets-1
+kubectl apply -f deployment.yaml
+gcloud container node-pools list --zone=us-central1-c --cluster=my-cluster
+kubectl get pods -o wide
+ 
+kubectl set image deployment hello-world-rest-api hello-world-rest-api=in28min/hello-world-rest-api:0.0.2.RELEASE
+kubectl get services
+kubectl get replicasets
+kubectl get pods
+kubectl delete pod hello-world-rest-api-58dc9d7fcc-8pv7r
+ 
+kubectl scale deployment hello-world-rest-api --replicas=1
+kubectl get replicasets
+gcloud projects list
+ 
+kubectl delete service hello-world-rest-api
+kubectl delete deployment hello-world-rest-api
+gcloud container clusters delete my-cluster --zone us-central1-c
+```
+
 ### IAM:
 ```
 gcloud compute project-info describe
